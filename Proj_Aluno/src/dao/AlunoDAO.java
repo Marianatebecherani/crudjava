@@ -1,11 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package dao;
 
 import java.sql.*;
 import factory.*;
+import java.time.LocalDate;
 import modelo.*;
 
 public class AlunoDAO {
@@ -17,10 +15,17 @@ public class AlunoDAO {
     }
     
     public void adiciona (Aluno aluno){
-        String sql = "INSERT INTO aluno(aluno_nome) VALUES(?)";
+        //String sql = "INSERT INTO aluno(aluno_nome) VALUES(?)";
+        
+        String sql = "INSERT INTO aluno(cpf, nome, data_nascimento, peso, altura) VALUES (?, ?, ?, ?, ?)";
+
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
-            stmt.setString(1, aluno.getNome());
+            stmt.setString(1, aluno.getCpf());
+            stmt.setString(2, aluno.getNome());
+            stmt.setDate(3, java.sql.Date.valueOf(aluno.getDataNasc()));
+            stmt.setFloat(4, aluno.getPeso());
+            stmt.setFloat(5, aluno.getAltura());
             stmt.execute();
             stmt.close();
         }

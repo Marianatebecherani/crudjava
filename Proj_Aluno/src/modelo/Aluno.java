@@ -1,17 +1,25 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package modelo;
 
+import java.time.LocalDate;
+
 public class Aluno {
-    
+
     private int codigo;
     private String nome;
-    private int cpf;
-    private Data dataNasc;
+    private String cpf;
+    private LocalDate dataNasc;
     private float peso;
     private float altura;
+
+    public Aluno(int codigo, String nome, String cpf, LocalDate dataNasc, float peso, float altura) {
+        this.codigo = codigo;
+        this.nome = nome;
+        this.cpf = cpf;
+        this.dataNasc = dataNasc;
+        this.peso = peso;
+        this.altura = altura;
+    }
 
     public int getCodigo() {
         return codigo;
@@ -29,19 +37,19 @@ public class Aluno {
         this.nome = nome;
     }
 
-    public int getCpf() {
+    public String getCpf() {
         return cpf;
     }
 
-    public void setCpf(int cpf) {
+    public void setCpf(String cpf) {
         this.cpf = cpf;
     }
 
-    public Data getDataNasc() {
+    public LocalDate getDataNasc() {
         return dataNasc;
     }
 
-    public void setDataNasc(Data dataNasc) {
+    public void setDataNasc(LocalDate dataNasc) {
         this.dataNasc = dataNasc;
     }
 
@@ -61,4 +69,9 @@ public class Aluno {
         this.altura = altura;
     }
     
+    @Override
+    public String toString() {
+        return "Aluno{" + "codigo=" + codigo + ", nome=" + nome + ", cpf=" + cpf + ", dataNasc=" + dataNasc + ", peso=" + peso + ", altura=" + altura + '}';
+    }
+        
 }
