@@ -4,14 +4,25 @@
  */
 package modelo;
 
+import java.time.LocalDate;
+
 public class Aluno {
     
     private int codigo;
     private String nome;
     private int cpf;
-    private Data dataNasc;
+    private LocalDate dataNasc;
     private float peso;
     private float altura;
+
+    public Aluno(int codigo, String nome, int cpf, LocalDate dataNasc, float peso, float altura) {
+        this.codigo = codigo;
+        this.nome = nome;
+        this.cpf = cpf;
+        this.dataNasc = dataNasc;
+        this.peso = peso;
+        this.altura = altura;
+    }
 
     public int getCodigo() {
         return codigo;
@@ -37,14 +48,6 @@ public class Aluno {
         this.cpf = cpf;
     }
 
-    public Data getDataNasc() {
-        return dataNasc;
-    }
-
-    public void setDataNasc(Data dataNasc) {
-        this.dataNasc = dataNasc;
-    }
-
     public float getPeso() {
         return peso;
     }
@@ -59,6 +62,14 @@ public class Aluno {
 
     public void setAltura(float altura) {
         this.altura = altura;
+    }
+    
+    public void setDataNasc(LocalDate dataNasc) {
+        this.dataNasc = dataNasc;
+    }
+    
+    public LocalDate getDataNasc() {
+        return dataNasc;
     }
     
 }
