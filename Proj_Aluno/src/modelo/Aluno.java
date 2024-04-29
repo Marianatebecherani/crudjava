@@ -20,6 +20,10 @@ public class Aluno {
         this.peso = peso;
         this.altura = altura;
     }
+    
+    public Aluno() {
+        
+    }
 
     public int getCodigo() {
         return codigo;
@@ -44,7 +48,38 @@ public class Aluno {
     public void setCpf(String cpf) {
         this.cpf = cpf;
     }
-
+    
+    public boolean verificaCpf(String cpf){
+        int tamanhoTotal = cpf.length();
+        if(tamanhoTotal != 14){
+            return false;
+        }
+        if(cpf.indexOf("-") == -1){
+            return false;
+        }
+        String partesA[] = cpf.split("-");
+        if(partesA.length != 2){
+            return false;
+        }
+        if(partesA[1].length() != 2){
+            return false;
+        }
+        if(partesA[0].indexOf(".") == -1){
+            return false;
+        }
+        String partesB[] = partesA[0].split(".");
+        if(partesB.length != 3){
+            return false;
+        }
+        if(partesB[0].length() == 3 & partesB[1].length() == 3 & partesB[2].length() == 3){
+            return true;
+        }
+        else{
+            return false;
+        }
+        
+    }
+    
     public LocalDate getDataNasc() {
         return dataNasc;
     }
@@ -52,7 +87,27 @@ public class Aluno {
     public void setDataNasc(LocalDate dataNasc) {
         this.dataNasc = dataNasc;
     }
-
+    
+    public boolean verificaDataNasc(String dataNasc){
+        int tamanho = dataNasc.length();
+        if(tamanho != 10){
+            return false;
+        }
+        if(dataNasc.indexOf("/") == -1){
+            return false;
+        }
+        String partes[] = dataNasc.split("/");
+        if(partes.length != 3){
+            return false;
+        }
+        if(partes[0].length() == 2 & partes[1].length() == 2 & partes[2].length() == 4){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    
     public float getPeso() {
         return peso;
     }

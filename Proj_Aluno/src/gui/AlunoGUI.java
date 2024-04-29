@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package gui;
 
 import dao.AlunoDAO;
@@ -9,10 +6,7 @@ import javax.swing.JOptionPane;
 import modelo.Aluno;
 import java.time.LocalDate;
 
-/**
- *
- * @author Mariana
- */
+
 public class AlunoGUI extends javax.swing.JFrame {
 
     /**
@@ -113,11 +107,11 @@ public class AlunoGUI extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel6)
                                 .addGap(18, 18, 18)
-                                .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
+                                .addComponent(jTextField5))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel5)
                                 .addGap(18, 18, 18)
-                                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(14, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -182,33 +176,50 @@ public class AlunoGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Aluno aluno = new Aluno();
-       aluno.setNome(jTextField1.getText());
        
        if ((jTextField1.getText().isEmpty())) {
            JOptionPane.showMessageDialog(null, "O campo NOME nao pode retornar vazio");
-       }
-       
+       }     
        else if ((jTextField2.getText().isEmpty())) {
            JOptionPane.showMessageDialog(null, "O campo CPF nao pode retornar vazio");
        }
-       
        else if ((jTextField3.getText().isEmpty())) {
            JOptionPane.showMessageDialog(null, "O campo DATA DE NASCIMENTO nao pode retornar vazio");
        }
-       
        else if ((jTextField4.getText().isEmpty())) {
            JOptionPane.showMessageDialog(null, "O campo PESO nao pode retornar vazio");
        }
-       
        else if ((jTextField5.getText().isEmpty())) {
            JOptionPane.showMessageDialog(null, "O campo ALTURA nao pode retornar vazio");
        }
-       
-        else {
+       else {
+           Aluno aluno = new Aluno();
+           
+           String AlunoNome = jTextField1.getText();
+           String AlunoCpf = "";
+           if(aluno.verificaCpf(jTextField2.getText())){
+               AlunoCpf = jTextField2.getText();
+           }
+           LocalDate Data = LocalDate.of(2000,1,1);
+           if(aluno.verificaDataNasc(jTextField3.getText())){
+               String componentes[] = (jTextField3.getText()).split("/");
+               int dia = Integer.valueOf(componentes[0]);
+               int mes = Integer.valueOf(componentes[1]);
+               int ano = Integer.valueOf(componentes[2]);
+               Data = Data.withYear(mes);
+               Data = Data.withMonth(mes);
+               Data = Data.withDayOfMonth(dia);
+           }
+           
+           aluno.setNome(AlunoNome);
+           aluno.setCpf(AlunoCpf);
+           aluno.setDataNasc(Data);
+           aluno.setPeso(Float.valueOf(jTextField4.getText()));
+           aluno.setAltura(Float.valueOf(jTextField5.getText()));
+           
            AlunoDAO dao = new AlunoDAO();
            dao.adiciona(aluno);
-           JOptionPane.showMessageDialog(null, "Cliente " + jTextField1.getText() + " inserido com sucesso!");
+           JOptionPane.showMessageDialog(null, "Aluno " + jTextField1.getText() + " inserido(a) com sucesso!");
        }
        
        jTextField1.setText("");
