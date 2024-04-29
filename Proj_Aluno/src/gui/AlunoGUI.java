@@ -206,7 +206,7 @@ public class AlunoGUI extends javax.swing.JFrame {
                int dia = Integer.valueOf(componentes[0]);
                int mes = Integer.valueOf(componentes[1]);
                int ano = Integer.valueOf(componentes[2]);
-               Data = Data.withYear(mes);
+               Data = Data.withYear(ano);
                Data = Data.withMonth(mes);
                Data = Data.withDayOfMonth(dia);
            }
