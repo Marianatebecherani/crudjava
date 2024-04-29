@@ -67,7 +67,7 @@ public class Aluno {
         if(partesA[0].indexOf(".") == -1){
             return false;
         }
-        String partesB[] = partesA[0].split(".");
+        String partesB[] = (partesA[0]).split("\\.");
         if(partesB.length != 3){
             return false;
         }
