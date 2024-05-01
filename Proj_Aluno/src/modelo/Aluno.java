@@ -1,18 +1,19 @@
 
 package modelo;
 
-import java.time.LocalDate;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 
 public class Aluno {
 
     private int codigo;
     private String nome;
     private String cpf;
-    private LocalDate dataNasc;
+    private Date dataNasc;
     private float peso;
     private float altura;
 
-    public Aluno(int codigo, String nome, String cpf, LocalDate dataNasc, float peso, float altura) {
+    public Aluno(int codigo, String nome, String cpf, Date dataNasc, float peso, float altura) {
         this.codigo = codigo;
         this.nome = nome;
         this.cpf = cpf;
@@ -80,11 +81,11 @@ public class Aluno {
         
     }
     
-    public LocalDate getDataNasc() {
+    public Date getDataNasc() {
         return dataNasc;
     }
 
-    public void setDataNasc(LocalDate dataNasc) {
+    public void setDataNasc(Date dataNasc) {
         this.dataNasc = dataNasc;
     }
     
@@ -126,7 +127,18 @@ public class Aluno {
     
     @Override
     public String toString() {
-        return "Aluno{" + "codigo=" + codigo + ", nome=" + nome + ", cpf=" + cpf + ", dataNasc=" + dataNasc + ", peso=" + peso + ", altura=" + altura + '}';
+        
+        //SimpleDateFormat fmtOriginal = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat fmtDesejado = new SimpleDateFormat("dd/MM/yyyy");
+        String dataNascFormatada = fmtDesejado.format(dataNasc);
+           
+        return "ID: " + codigo +
+               ", CPF: " + cpf +
+               ", Nome: " + nome +
+               ", Data de Nascimento: " + dataNascFormatada +
+               ", Peso: " + peso +
+               ", Altura: " + altura;
+    
     }
         
 }

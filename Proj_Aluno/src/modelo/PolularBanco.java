@@ -5,9 +5,9 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.time.LocalDate;
-import java.time.Month;
 import java.util.ArrayList;
 import java.util.List;
+import java.sql.Date;
 
 import dao.AlunoDAO;
 
@@ -53,7 +53,7 @@ public class PolularBanco {
                     float AlunoPeso = Float.valueOf(linhas[3]);
                     float AlunoAltura = Float.valueOf(linhas[4]);
                     
-                    listaDeAlunos.add(new Aluno(i+1, AlunoNome, AlunoCpf, AlunoDate, AlunoPeso, AlunoAltura));  
+                    listaDeAlunos.add(new Aluno(i+1, AlunoNome, AlunoCpf, Date.valueOf(AlunoDate), AlunoPeso, AlunoAltura));  
                 
                 }
                  

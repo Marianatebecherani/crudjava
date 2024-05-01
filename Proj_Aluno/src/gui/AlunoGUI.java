@@ -5,6 +5,7 @@ import dao.AlunoDAO;
 import javax.swing.JOptionPane;
 import modelo.Aluno;
 import java.time.LocalDate;
+import java.sql.Date;
 
 
 public class AlunoGUI extends javax.swing.JFrame {
@@ -73,6 +74,11 @@ public class AlunoGUI extends javax.swing.JFrame {
         jButton3.setText("Excluir");
 
         jButton4.setText("Consultar");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -112,7 +118,7 @@ public class AlunoGUI extends javax.swing.JFrame {
                                 .addComponent(jLabel5)
                                 .addGap(18, 18, 18)
                                 .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -159,7 +165,7 @@ public class AlunoGUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 371, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -213,7 +219,7 @@ public class AlunoGUI extends javax.swing.JFrame {
            
            aluno.setNome(AlunoNome);
            aluno.setCpf(AlunoCpf);
-           aluno.setDataNasc(Data);
+           aluno.setDataNasc(Date.valueOf(Data));
            aluno.setPeso(Float.valueOf(jTextField4.getText()));
            aluno.setAltura(Float.valueOf(jTextField5.getText()));
            
@@ -232,6 +238,12 @@ public class AlunoGUI extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
        
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        ConsultaGUI NovaInstanciaConsultaGUI = new ConsultaGUI();
+        NovaInstanciaConsultaGUI.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
