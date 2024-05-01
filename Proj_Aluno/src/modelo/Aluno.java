@@ -3,6 +3,8 @@ package modelo;
 
 import java.sql.Date;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Aluno {
 
@@ -33,6 +35,23 @@ public class Aluno {
     public void setCodigo(int codigo) {
         this.codigo = codigo;
     }
+    
+    public static List<Integer> extractId(List<String> lista){
+        List<Integer> listaIds = new ArrayList<>();
+        
+        for(String elemento : lista){
+            int tagStart = elemento.indexOf(":");
+            int tagFinal = elemento.indexOf(",");
+            // System.out.println(tagStart);
+            // System.out.println(tagFinal);
+            if(tagStart != -1 & tagFinal != -1){
+                tagStart += 2;
+                int valor = Integer.valueOf(elemento.substring(tagStart, tagFinal));
+                listaIds.add(valor);
+            }
+        }
+        return listaIds;
+    } 
 
     public String getNome() {
         return nome;
@@ -83,6 +102,12 @@ public class Aluno {
     
     public Date getDataNasc() {
         return dataNasc;
+    }
+    
+    public String getDataNascFormatada(){
+        SimpleDateFormat fmtDesejado = new SimpleDateFormat("dd/MM/yyyy");
+        String dataNascFormatada = fmtDesejado.format(dataNasc);
+        return dataNascFormatada;
     }
 
     public void setDataNasc(Date dataNasc) {
