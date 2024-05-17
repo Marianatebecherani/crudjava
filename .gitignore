@@ -88,3 +88,5 @@ nb-configuration.xml
 ## Miscellaneous
 ##############################
 *.log
+Proj_Aluno/nbproject/private/private.properties
+Proj_Aluno/nbproject/project.properties
